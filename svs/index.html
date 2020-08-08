@@ -4,6 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Semantic View Synthesis</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Semantic View Synthesis">
+	<meta property="og:url" content="https://hhsinping.github.io/svs/">
+	<meta name="keywords" content="Semantic View Synthesis, Hsin-Ping Huang, Hung-Yu Tseng, Jia-Bin Huang">
+	<meta name="author" content="Hsin-Ping Huang">
 	<!-- jQuery -->
 	<script
 		src="https://code.jquery.com/jquery-3.1.0.min.js"
@@ -11,8 +16,6 @@
 		crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 </head>
 <body>
 	<div class="container">
@@ -20,20 +23,122 @@
 			<div class="col-xs-12 text-center">
 				<br>
 				<h1>Semantic View Synthesis</h1>
+				<br>
+				<h4><a href="https://hhsinping.github.io/svs/">Hsin-Ping&nbsp;Huang</a><sup>1</sup> &emsp; <a href="https://sites.google.com/site/hytseng0509/">Hung-Yu&nbsp;Tseng</a><sup>2</sup> &emsp; <a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee</a><sup>2</sup> &emsp; <a href="https://filebox.ece.vt.edu/~jbhuang/">Jia-Bin&nbsp;Huang</a><sup>3</sup>
+				</h4>
 			</div>
 			<div class="col-xs-12 text-center">
-				<h4>Hsin-Ping Huang &emsp; Hung-Yu Tseng &emsp; Hsin-Ying Lee &emsp; Jia-Bin Huang</h4>
+				<h4><sup>1</sup>UT&nbsp;Austin &emsp; <sup>2</sup>UC&nbsp;Merced &emsp; <sup>3</sup>Virginia&nbsp;Tech</h4>
 			</div>
 		</div>
 		<br>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<video width="768" height="400" controls>
+						  <source src="teaser/one_min_video.mp4" type="video/mp4">
+						</video>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Abstract</h3>
+				<p >We tackle a new problem of semantic view synthesis --- generating free-viewpoint rendering of a synthesized scene using a semantic label map as input. We build upon recent advances in semantic image synthesis and view synthesis for handling photographic image content generation and view extrapolation. Direct application of existing image/view synthesis methods, however, results in severe ghosting/blurry artifacts. To address the drawbacks, we propose a two-step approach. First, we focus on synthesizing the color and depth of the visible surface of the 3D scene. We then use the synthesized color and depth to impose explicit constraints on the multiple-plane image (MPI) representation prediction process. Our method produces sharp contents at the original view and geometrically consistent renderings across novel viewpoints. The experiments on numerous indoor and outdoor images show favorable results against several strong baselines and validate the effectiveness of our approach.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Links</h3>
+				<a href="link/paper.pdf">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Paper</button>
+				</a>
+				<a href="https://hhsinping.github.io/svs/">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>Supplementary Website</button>
+				</a>
+				<a href="https://hhsinping.github.io/svs/">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Google Colab</button>
+				</a>
+				<a href="link/slide.pdf">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>Slides</button>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Examples</h3>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
+				<div class="row">
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/teaser_0030.gif">
+					</div>
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/ours_0030.gif">
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-3 col-md-offset-0">
+				<div class="row">
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/teaser_0010.gif">
+					</div>
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/ours_0010.gif">
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
+				<div class="row">
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/teaser_0110.gif">
+					</div>
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/ours_0110.gif">
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-3 col-md-offset-0">
+				<div class="row">
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/teaser_0126.gif">
+					</div>
+					<div class="col-xs-12 teaser-img">
+						<img class="img-responsive" src="img/ours_0126.gif">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>BibTeX</h3>
+<pre>
+@inproceedings{SVS,
+  author       = "Huang, Hsin-Ping and Tseng, Hung-Yu and Lee, Hsin-Ying and Huang, Jia-Bin",
+  title        = "Semantic View Synthesis",
+  booktitle    = "European Conference on Computer Vision (ECCV)",
+  year         = "2020"
+}
+</pre>
+			</div>
 
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<h5>Page source: <a href="https://phuang17.github.io/DeepMVS/index.html">Po-Han&nbsp;Huang</a> </h5>
+			</div>
+
+
+		</div>
 	</div>
 
 	
 	
 	<style type="text/css">
 .container {
-	background-color: #FBFBFC;
+	background-color: #FFFFFF;
 }
 .teaser-img {
 	margin-top: 5px;
