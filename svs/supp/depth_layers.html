@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Semantic View Synthesis</title>
+	<!-- jQuery -->
+	<script
+		src="https://code.jquery.com/jquery-3.1.0.min.js"
+		integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<a href="main.html">
+					<button type="button" class="btn btn-link">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to Main Page
+					</button>
+				</a>
+				<br>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<br>
+				<h1>Ablation Study - Number of depth layers</h1>
+			<div class="col-xs-12 text-left">
+				<h4>We shows the results of having a different number of depth layers in our MPI.</h4>  
+				<h4>(a) <b>K = 32</b></h4>
+				<h4>(b) <b>K = 64</b></h4>
+				<h4>(c) <b>K = 128 (Ours)</b></h4>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<hr>
+				<div class="well well-sm">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="dataset-select">Dataset:&nbsp;</label>
+							<select class="form-control" id="dataset-select" oninput="ChangeDataset();">
+								<option value="occ 40">ADE</option>
+							</select>
+						</div>
+						&emsp;
+						<div class="form-group">
+							<label for="frame-idx-input">Video: <span id="frame-idx">01</span> / <span id="frame-total">40</span>&nbsp;</label>
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-info" type="button" onclick="PrevFrame();"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+								</span>
+								<input type="range" class="form-control" id="frame-idx-input" min="1" max="40" step="1" value="1" oninput="ChangeFrame();">
+								<span class="input-group-btn">
+									<button class="btn btn-info" type="button" onclick="NextFrame();"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+								</span>
+							</div>
+						</div>
+					</form>
+					<hr style="margin: 7px;">
+					<h5><strong>Method:&nbsp;</strong></h5>
+					<ul class="nav nav-pills" id="current-view-ul">
+						<li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(0);">(a) K=32</a></li>
+						<li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(1);">(b) K=64</a></li>
+						<li role="presentation" class="active"><a href="javascript: void(0);" onclick="ChangeCurrentView(2);">(c) K=128 (Our results)</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div>
+			<div class="containner col-xs-12 text-center">
+				<div>
+					<img id="showoff-label" src="depth_layers/label/occ_01.png" width="300" height="300">
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img" width="330" height="330" controls autoplay loop muted>
+							<source src="depth_layers/128/occ_01.mp4" type="video/mp4" width="330" height="330">
+						</video>
+					</div>				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script src="js/jquery.event.move.js"></script>
+    <script src="js/jquery.twentytwenty.js"></script>
+    <script>
+    $(function(){
+      $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+      $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+    });
+    </script>
+	
+	<style type="text/css">
+	
+.container-video{
+    width: 300px;
+    height: 300px;
+    overflow:hidden;
+    display:block;
+}
+#showoff-img{
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+
+}
+
+.container {
+	background-color: #FFFFFF;
+}
+.teaser-img {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.img-responsive {
+	margin: auto;
+}
+.comparison-table {
+	table-layout: fixed;
+		word-wrap: break-word;
+}
+.comparison-table th {
+	text-align: center;
+}
+.containner{display: flex;
+justify-content: center; /* align horizontal */
+align-items: center; /* for center of your page */
+height:100%; /* give it's height*/
+}
+img {                           /* optional  */
+   background-color:orange;
+}
+
+	</style>
+
+	<script type="text/javascript">
+	var currentViewList = ["32", "64", "128"];
+	var currentView = "128";
+
+	vid = document.getElementById("showoff-img");
+	vid.playbackRate = 0.40;	
+
+	function ChangeDataset(){
+		var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_total = parseInt(document.getElementById("dataset-select").value.split(" ")[1]);
+		document.getElementById("frame-total").innerHTML = frame_total;
+		document.getElementById("frame-idx-input").value = 1;
+		document.getElementById("frame-idx-input").max = frame_total;
+		ChangeFrame();
+	}
+
+	function ChangeFrame(){
+		var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+		document.getElementById("showoff-img").src = "depth_layers/"+ currentView + '/' +dataset +'_' +("00" + frame_idx).slice(-2) + '.mp4';
+
+		document.getElementById("showoff-label").src = "depth_layers/label/" +dataset +'_' +("00" + frame_idx).slice(-2) + '.png';
+
+		vid = document.getElementById("showoff-img");
+		vid.playbackRate = 0.40;	
+
+	}
+
+	function NextFrame(){
+		var frame_total = parseInt(document.getElementById("dataset-select").value.split(" ")[1]);
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		if(frame_idx < frame_total){
+			document.getElementById("frame-idx-input").value = frame_idx + 1;
+			ChangeFrame();
+		}
+	}
+
+	function PrevFrame(){
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		if(frame_idx > 1){
+			document.getElementById("frame-idx-input").value = frame_idx - 1;
+			ChangeFrame();
+		}
+	}
+
+	function ChangeCurrentView(idx){
+		var li_list = document.getElementById("current-view-ul").children;
+		console.log(idx);
+		console.log(li_list);
+		for(i = 0; i < li_list.length; i++){
+			li_list[i].className = "";
+		}
+		li_list[idx].className = "active";
+		currentView = currentViewList[idx];
+		ChangeFrame();
+	}
+
+	</script>
+
+
+</body>
+</html>
