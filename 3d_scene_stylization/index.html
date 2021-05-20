@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learning to Stylize Novel Views</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Learning to Stylize Novel Views">
+	<meta property="og:url" content="https://hhsinping.github.io/3d_scene_stylization/">
+	<meta name="keywords" content="Learning to Stylize Novel Views">
+	<meta name="author" content="Hsin-Ping Huang">
+	<!-- jQuery -->
+	<script
+		src="https://code.jquery.com/jquery-3.1.0.min.js"
+		integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<br>
+				<h1>Learning to Stylize Novel Views</h1>
+				<br>
+				<h4><a href="https://hhsinping.github.io">Hsin-Ping&nbsp;Huang</a><sup>1</sup> &emsp; <a href="https://hytseng0509.github.io">Hung-Yu&nbsp;Tseng</a><sup>1</sup> &emsp; <a href="https://sophont01.github.io">Saurabh&nbsp;Saini</a><sup>2</sup> &emsp; Maneesh Singh<sup>2</sup> &emsp; <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan&nbsp;Yang</a><sup>1,3</sup>
+				</h4>
+			</div>
+			<div class="col-xs-12 text-center">
+				<h4><sup>1</sup>UC&nbsp;Merced &emsp; <sup>2</sup>Verisk&nbsp;Analytics &emsp; <sup>3</sup>Google&nbsp;Research</h4>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<img src="teaser.png" width="768">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Abstract</h3>
+				We tackle a 3D scene stylization problem --- generating stylized images of a scene from arbitrary novel views given a set of images of the same scene and a reference image of the desired style as inputs. Direct solution of combining novel view synthesis and stylization approaches lead to results that are blurry or not consistent across different views. We propose a point cloud-based method for consistent 3D scene stylization. First, we construct the point cloud by back-projecting the image features to the 3D space. Second, we develop point cloud aggregation modules to gather the style information of the 3D scene, and then modulate the features in the point cloud with a linear transformation matrix. Finally, we project the transformed features to 2D space to obtain the novel views. Experimental results on two diverse datasets of real-world scenes validate that our method generates consistent stylized novel view synthesis results against other alternative approaches.
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Links</h3>
+				<div class="row">
+					<div class="col-xs-12 text-left">
+				<a href="https://hhsinping.github.io/3d_scene_stylization/">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Paper</button>
+				</a>
+				<a href="https://hhsinping.github.io/3d_scene_stylization/">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Code (TBA)</button>
+				</a>			
+					<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Overview</h3>
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<img src="overview.png" width="768">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Results</h3>
+			</div>
+		<div class="row text-center">
+
+			<div class="containner col-xs-12 text-center">
+				<div>
+					<img id="showoff-label" src="visual_comparison/input/play2.jpg" width="180" >
+					<h4> Input images </h4>
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img" width="320" controls autoplay loop muted>
+							<source src="visual_comparison/lst/lst_play2.mp4" type="video/mp4" width="320">
+						</video>
+					</div>				
+					<h4 id="demo">SVS [1] → LST [2]</h4>
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img2" width="320" controls autoplay loop muted>
+							<source src="visual_comparison/cvpr/cvpr_play2.mp4" type="video/mp4" width="320">
+						</video>
+					</div>				
+					<h4 id="demo">SVS [1] → TPFR [3]</h4>
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img3" width="320" controls autoplay loop muted>
+							<source src="visual_comparison/com/com_play2.mp4" type="video/mp4" width="320">
+						</video>
+					</div>				
+					<h4 id="demo">SVS [1] → Compound [4]</h4>
+				</div>
+			</div>
+			<div class="containner col-xs-12 text-center">
+				<div>
+					<img id="showoff-depth" src="visual_comparison/style/play2.jpg" width="180" >
+					<h4> Style image </h4>
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img4" width="320" controls autoplay loop muted>
+							<source src="visual_comparison/wacv/wacv_play2.mp4" type="video/mp4" width="320">
+						</video>
+					</div>				
+					<h4 id="demo">SVS [1] → FMVST [5]</h4>
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img5" width="320" controls autoplay loop muted>
+							<source src="visual_comparison/mcc/mcc_play2.mp4" type="video/mp4" width="320">
+						</video>
+					</div>				
+					<h4 id="demo">SVS [1] → MCC [6]</h4>
+				</div> &nbsp;&nbsp;
+				<div>
+					<div class="container-video">
+						<video id="showoff-img6" width="320" controls autoplay loop muted>
+							<source src="visual_comparison/our/our_play2.mp4" type="video/mp4" width="320">
+						</video>
+					</div>				
+					<h4 style="color:red; font-weight: bold;">Ours</h4>
+				</div>
+			</div>
+			
+			
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="dataset-select">&nbsp;</label>
+					<select style="display:none" class="form-control" id="dataset-select" oninput="ChangeDataset();">
+						<option value="occ 26"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="frame-idx-input" hidden>Video: <span id="frame-idx">01</span> / <span id="frame-total">08</span>&nbsp;</label>
+					<div class="input-group">
+						<div class="slidecontainer">
+							<input type="range" class="slider-color" id="frame-idx-input" min="1" max="8" step="1" value="1" oninput="ChangeFrame();">
+						</div>
+					</div>
+				</div>
+			</form>
+
+
+		</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>BibTeX</h3>
+<pre>
+@article{huang_2021_3d_scene_stylization,
+   title = {Learning to Stylize Novel Views},
+   author={Huang, Hsin-Ping and Tseng, Hung-Yu and Saini, Saurabh and Singh, Maneesh and Yang, Ming-Hsuan},
+   journal = {arXiv preprint arXiv:},
+   year={2021}
+}
+</pre>
+			</div>
+			<div class="col-xs-12 text-left">
+				<h3>References</h3>
+				[1] Gernot Riegler and Vladlen Koltun. Stable View Synthesis. In CVPR, 2021. <br>
+				[2] Xueting Li, Sifei Liu, Jan Kautz, and Ming-Hsuan Yang. Learning Linear Transformations for Fast Arbitrary Style Transfer. In CVPR, 2019.<br>
+				[3] Jan Svoboda, Asha Anoosheh, Christian Osendorfer, and Jonathan Masci. Two-Stage Peer-Regularized Feature Recombination for Arbitrary Image Style Transfer. In CVPR, 2020.<br>
+				[4] Wenjing Wang, Jizheng Xu, Li Zhang, Yue Wang, and Jiaying Liu. Consistent Video Style Transfer via Compound Regularization. In AAAI, 2020.<br>
+				[5] Wei Gao, Yijun Li, Yihang Yin, and Ming-Hsuan Yang. Fast Video Multi-Style Transfer. In WACV, 2020.<br>
+				[6] Yingying Deng, Fan Tang, Weiming Dong, haibin Huang, Ma chongyang, and Changsheng Xu. Arbitrary Video Style Transfer via Multi-Channel Correlation. In AAAI, 2021.<br>
+
+			</div>
+
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<h5>Page source: <a href="https://phuang17.github.io/DeepMVS/index.html">Po-Han&nbsp;Huang</a> </h5>
+			</div>
+
+
+		</div>
+	</div>
+
+	
+	
+	<style type="text/css">
+.container {
+	background-color: #FFFFFF;
+}
+.teaser-img {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.img-responsive {
+	margin: auto;
+}
+
+.vidcontainer{
+    width: 256px;
+    height: 256px;
+    overflow:hidden;
+}
+#glass{
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.slidecontainer {
+  width: 300px; /* Width of the outside container */
+}
+	
+.slider-color {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity:0.7;
+  -webkit-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
+}
+.slider-color:hover {
+  opacity:1;
+}
+.slider-color::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+.slider-color::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border: 0;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+	
+	
+.container-video{
+    width: 330px;
+    overflow:hidden;
+    display:block;
+}
+
+
+
+	
+
+.teaser-img {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.img-responsive {
+	margin: auto;
+}
+.comparison-table {
+	table-layout: fixed;
+		word-wrap: break-word;
+}
+.comparison-table th {
+	text-align: center;
+}
+.containner{display: flex;
+justify-content: center; /* align horizontal */
+align-items: center; /* for center of your page */
+height:100%; /* give it's height*/
+}
+img {                           /* optional  */
+   background-color:orange;
+}
+
+h5.one{display:inline}
+
+
+	</style>
+	
+	
+		<script type="text/javascript">
+	var vid_list = ["play2","tank5","truck5","train2","test11","test5","test15","test20"]
+
+	vid = document.getElementById("showoff-img");
+
+
+	function ChangeDataset(){
+		var frame_total = parseInt(document.getElementById("dataset-select").value.split(" ")[1]);
+		document.getElementById("frame-total").innerHTML = frame_total;
+		document.getElementById("frame-idx-input").value = 1;
+		document.getElementById("frame-idx-input").max = frame_total;
+		ChangeFrame();
+	}
+
+	function ChangeFrame(){
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value) -1;
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+		document.getElementById("showoff-img").src =  "visual_comparison/lst/lst_" + vid_list[frame_idx] + '.mp4';
+		document.getElementById("showoff-img2").src = "visual_comparison/cvpr/cvpr_" + vid_list[frame_idx] + '.mp4';
+		document.getElementById("showoff-img3").src = "visual_comparison/com/com_" + vid_list[frame_idx] + '.mp4';
+		document.getElementById("showoff-img4").src = "visual_comparison/wacv/wacv_" + vid_list[frame_idx] + '.mp4';
+		document.getElementById("showoff-img5").src = "visual_comparison/mcc/mcc_" + vid_list[frame_idx] + '.mp4';
+		document.getElementById("showoff-img6").src = "visual_comparison/our/our_" + vid_list[frame_idx] + '.mp4';
+
+		document.getElementById("showoff-label").src = "visual_comparison/input/" + vid_list[frame_idx] + '.jpg';
+		document.getElementById("showoff-depth").src = "visual_comparison/style/" + vid_list[frame_idx] + '.jpg';
+
+
+		vid = document.getElementById("showoff-img");
+		
+	}
+
+	function NextFrame(){
+		var frame_total = parseInt(document.getElementById("dataset-select").value.split(" ")[1]);
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		if(frame_idx < frame_total){
+			document.getElementById("frame-idx-input").value = frame_idx + 1;
+			ChangeFrame();
+		}
+	}
+
+	function PrevFrame(){
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		if(frame_idx > 1){
+			document.getElementById("frame-idx-input").value = frame_idx - 1;
+			ChangeFrame();
+		}
+	}
+
+	function ChangeCurrentView(idx){
+		var li_list = document.getElementById("current-view-ul").children;
+		console.log(idx);
+		console.log(li_list);
+		for(i = 0; i < li_list.length; i++){
+			li_list[i].className = "";
+		}
+		li_list[idx].className = "active";
+		ChangeFrame();
+		
+
+	}
+
+	</script>
+
+</body>
+</html>
