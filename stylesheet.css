@@ -55,7 +55,7 @@ a {
 a:focus,
 a:hover
 {
-  color: #f09228;
+  color: #0476D0;
   text-decoration: underline;
 }
 
@@ -65,14 +65,17 @@ th,
 tr,
 p {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   color: #444;
   line-height: 1.5;
 }
 
+em {
+  color: #d00410;
+}
 p.color {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   color: #f09228;
   line-height: 1.5;
   font-weight: 550;    
@@ -80,25 +83,25 @@ p.color {
 
 a {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   color: #444;
 }
 
 a.color {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 17px;
-  color: #0052a0;
+  font-size: 15px;
+  color: #1772d0;
 }
 
 a.small {
   font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
-  color: #0052a0;
+  color: #0476D0;
 }
 
 strong {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   color: #444;  
   font-weight: 550;  
 }
@@ -112,7 +115,7 @@ heading {
 
 papertitle {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 19px;
+  font-size: 15px;
   color: #444;  
   font-weight: 550;
 }
