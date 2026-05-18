@@ -131,6 +131,9 @@ name {
   width: 320px;
   height: 160px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .two {
@@ -150,4 +153,148 @@ name {
 
 span.highlight {
   background-color: #ffffd0;
+}
+
+/* Softer page background */
+body {
+  background-color: #fdfdfd;
+}
+
+/* Slightly looser line-height for readability */
+body, td, th, tr, p {
+  line-height: 1.6;
+}
+
+/* Clean section dividers */
+hr {
+  border: none;
+  border-top: 1px solid #e4e4e4;
+  margin: 12px 0;
+}
+
+/* Smooth link hover transitions */
+a, a.color, a.small {
+  transition: color 0.15s ease;
+}
+
+/* Rounded publication thumbnails */
+.one img,
+.one video {
+  border-radius: 6px;
+}
+
+/* Profile photo: rounded corners + gentle zoom on hover */
+img.hoverZoomLink {
+  border-radius: 8px;
+  transition: transform 0.25s ease;
+}
+
+img.hoverZoomLink:hover {
+  transform: scale(1.025);
+}
+
+/* ── Experience cards ───────────────────────────────────────────────────────── */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.6rem;
+}
+
+.exp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  background: #fafaf9;
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.exp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.exp-logo-wrap {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-logo {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.exp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.exp-company {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1b2a4a;
+}
+
+.exp-role {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.exp-date {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+/* ── Service grid ───────────────────────────────────────────────────────────── */
+.svc-label {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #444;
+  margin: 10px 0 4px;
+  display: block;
+}
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+
+.svc-item {
+  padding: 0.55rem 0.75rem;
+  background: #fafaf9;
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+}
+
+.svc-name {
+  display: block;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1b2a4a;
+}
+
+.svc-years {
+  display: block;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 0.15rem;
 }
