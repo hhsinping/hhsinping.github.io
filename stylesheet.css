@@ -193,14 +193,9 @@ td[width="70%"] span {
   color: #666;
 }
 
-/* Profile photo: rounded corners + gentle zoom on hover */
+/* Profile photo: rounded corners */
 img.hoverZoomLink {
   border-radius: 8px;
-  transition: transform 0.25s ease;
-}
-
-img.hoverZoomLink:hover {
-  transform: scale(1.025);
 }
 
 /* Experience section logos */
