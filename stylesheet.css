@@ -349,12 +349,16 @@ table.container th img {
 
   /* Experience: wrap into 3-column grid instead of horizontal scroll */
   table.container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center;
-    gap: 8px;
+    display: block !important;
     overflow-x: visible;
     white-space: normal;
+  }
+
+  table.container tr {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
 
   table.container th {
@@ -364,7 +368,7 @@ table.container th img {
     width: 28% !important;
     white-space: normal;
     padding: 4px !important;
-    vertical-align: top;
+    box-sizing: border-box;
   }
 
   table.container th p {
