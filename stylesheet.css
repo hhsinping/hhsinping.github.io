@@ -75,7 +75,7 @@ em {
 }
 p.color {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #f09228;
   line-height: 1.5;
   font-weight: 550;    
@@ -83,13 +83,13 @@ p.color {
 
 a {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #444;
 }
 
 a.color {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #1772d0;
 }
 
@@ -101,7 +101,7 @@ a.small {
 
 strong {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #444;  
   font-weight: 550;  
 }
@@ -115,7 +115,7 @@ heading {
 
 papertitle {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #444;  
   font-weight: 550;
 }
@@ -324,7 +324,13 @@ table.container th img {
   td[width="70%"] {
     display: block !important;
     width: 100% !important;
+    height: auto !important;
     padding: 0 0 20px !important;
+  }
+
+  /* Remove fixed height from all tds on mobile */
+  td[height] {
+    height: auto !important;
   }
 
   /* Thumbnail container */
