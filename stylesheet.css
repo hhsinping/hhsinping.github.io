@@ -260,41 +260,63 @@ img.hoverZoomLink:hover {
   line-height: 1.3;
 }
 
-/* ── Service grid ───────────────────────────────────────────────────────────── */
-.svc-label {
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: #444;
-  margin: 10px 0 4px;
-  display: block;
-}
+/* ── Mobile responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  /* Profile photo and bio: stack vertically */
+  td[style*="width:30%;max-width:30%"],
+  td[style*="width:70%;vertical-align:middle"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center;
+  }
 
-.svc-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.4rem;
-}
+  /* Publication thumbnail and text: stack vertically */
+  td[style*="width:30%;vertical-align:middle"] {
+    display: block !important;
+    width: 100% !important;
+    text-align: center;
+    padding: 8px 0 !important;
+  }
 
-.svc-item {
-  padding: 0.55rem 0.75rem;
-  background: #fafaf9;
-  border: 1px solid #f1f5f9;
-  border-radius: 10px;
-}
+  td[width="70%"] {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
 
-.svc-name {
-  display: block;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #1b2a4a;
-}
+  /* Remove fixed height on publication rows */
+  td[height] {
+    height: auto !important;
+  }
 
-.svc-years {
-  display: block;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 0.72rem;
-  color: #64748b;
-  margin-top: 0.15rem;
+  /* Thumbnail container */
+  .one {
+    width: 100% !important;
+    height: auto !important;
+    justify-content: center;
+  }
+
+  .one img,
+  .one video {
+    width: 90% !important;
+    max-width: 280px;
+    height: auto !important;
+  }
+
+  /* Experience table: horizontally scrollable */
+  table.container {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Shrink name on small screens */
+  name {
+    font-size: 24px;
+  }
+
+  heading {
+    font-size: 22px;
+  }
 }
