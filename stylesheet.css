@@ -342,8 +342,8 @@ table.container th img {
 
   .one img,
   .one video {
-    width: 75% !important;
-    max-width: 260px;
+    width: 100% !important;
+    max-width: 100%;
     height: auto !important;
   }
 
