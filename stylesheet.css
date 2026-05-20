@@ -183,6 +183,15 @@ a, a.color, a.small {
   border-radius: 6px;
 }
 
+/* Publication text column: left padding + description color */
+td[width="70%"] {
+  padding-left: 16px;
+}
+
+td[width="70%"] span {
+  color: #666;
+}
+
 /* Profile photo: rounded corners + gentle zoom on hover */
 img.hoverZoomLink {
   border-radius: 8px;
@@ -262,45 +271,58 @@ img.hoverZoomLink:hover {
 
 /* ── Mobile responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 700px) {
-  /* Profile photo and bio: stack vertically */
-  td[style*="width:30%;max-width:30%"],
-  td[style*="width:70%;vertical-align:middle"] {
+  body {
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  /* Profile photo: center and shrink */
+  td[style*="width:30%;max-width:30%"] {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     text-align: center;
+    padding: 20px 2.5% 8px !important;
   }
 
-  /* Publication thumbnail and text: stack vertically */
+  td[style*="width:30%;max-width:30%"] img {
+    width: 50% !important;
+    max-width: 180px !important;
+  }
+
+  /* Bio: full width, left-aligned */
+  td[style*="width:70%;vertical-align:middle"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 2.5% 2.5% !important;
+    text-align: left;
+  }
+
+  /* Publication thumbnail: stack above text */
   td[style*="width:30%;vertical-align:middle"] {
     display: block !important;
     width: 100% !important;
     text-align: center;
-    padding: 8px 0 !important;
+    padding: 12px 0 6px !important;
   }
 
   td[width="70%"] {
     display: block !important;
     width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Remove fixed height on publication rows */
-  td[height] {
-    height: auto !important;
+    padding: 0 0 20px !important;
   }
 
   /* Thumbnail container */
   .one {
     width: 100% !important;
     height: auto !important;
-    justify-content: center;
   }
 
   .one img,
   .one video {
-    width: 90% !important;
-    max-width: 280px;
+    width: 85% !important;
+    max-width: 300px;
     height: auto !important;
   }
 
@@ -309,11 +331,12 @@ img.hoverZoomLink:hover {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
   }
 
-  /* Shrink name on small screens */
+  /* Shrink headings */
   name {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   heading {
